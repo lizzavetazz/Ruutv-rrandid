@@ -8,6 +8,9 @@ t="Ruut juurt puudub"
 #если функция записана в комманд - не требует никакиз событий
 def lahenda():
     global a,b,c
+    graf=""
+    D=0
+    t=""
     if (a.get()!="" and b.get()!="" and c.get()!=""): #проверяем чтобы поля были заполнены и не были равны пустоте
         #if type!=  #тут надо проверить тип вводимх данных
         a_=float(a.get())
@@ -29,7 +32,7 @@ def lahenda():
             a.configure(bg="Lightblue")
             b.configure(bg="Lightblue")
             c.configure(bg="Lightblue")
-        vastus.configure(text=f"D={D}\n{t}")     
+        vastus.configure(text=f"D={D}\n{t}")   
     else:
         t="Ruut juurt puudub"
         if a.get()=="":
@@ -39,7 +42,7 @@ def lahenda():
         if c.get()=="":
             c.configure(bg="red")
         graf=True
-    return graf,D,t
+    return graf,D,t  
 def grafik():
     graf,D,t=lahenda()
     if graf==True:
@@ -126,7 +129,25 @@ def prillid():
     plt.xlabel("x")
     plt.grid(True)
     plt.show()
-
+def vihmavari():
+    x1=пр.arange(-12, 12, 0.5)
+    y1=(-1/18)*x1*x1+12
+    x2=пр.arange(-4, 4, 0.5)
+    y2=(-1/8)*x2*x2+6
+    x3=пр.arange(-12, 4, 0.5)
+    y3=(-1/8)*(x3+8)**2+6
+    x4=пр.arange(4, 12, 0.5)
+    y4=(-1/8)*(x4-8)**2+6
+    x5=пр.arange(-4, -0.3, 0.5)
+    y5=2*(x5+3)**2-9
+    x6=пр.arange(-4, 0.2, 0.5)
+    y6=1,5*(x6+3)**2-10
+    plt.plot(x1,y1,x2,y2,x3,y3,x4,y4,x5,y5,x6,y6)
+    plt.title("Vihmavari")
+    plt.ylabel("y")
+    plt.xlabel("x")
+    plt.grid(True)
+    plt.show()
 aken=Tk() #создаем окно
 aken.title("Ruutvõrrand")
 aken.geometry("650x200")
@@ -149,8 +170,8 @@ r1=Radiobutton(f2,text="vaal",variable=var,var=1, font="Calibri 26", command=vaa
 r1.pack()
 r2=Radiobutton(f2,text="prillid",variable=var,var=2, font="Calibri 26", command=prillid)
 r2.pack()
-#r3=Radiobutton(aken,text="vihmavari",variable=var,var=3, font="Calibri 26", command=vihmavari)
-#r3.pack()
+r3=Radiobutton(f2,text="vihmavari",variable=var,var=3, font="Calibri 26", command=vihmavari)
+r3.pack()
 a=Entry(f1,font="Calibri 26",fg="green",bg="Lightblue",width=3)
 a.pack(side=LEFT)
 x2=Label(f1,text="x**2+",font="Calibri 26",fg="green",padx=10)
